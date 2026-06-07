@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'submit_login.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -6,32 +7,32 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7FAFC),
+      backgroundColor: const Color(0xFFF4F8FB),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30),
+              const SizedBox(height: 35),
 
               Center(
                 child: Container(
-                  width: 90,
-                  height: 90,
+                  width: 84,
+                  height: 84,
                   decoration: BoxDecoration(
                     color: const Color(0xFF2563EB),
-                    borderRadius: BorderRadius.circular(28),
+                    borderRadius: BorderRadius.circular(24),
                   ),
                   child: const Icon(
                     Icons.home_repair_service,
                     color: Colors.white,
-                    size: 46,
+                    size: 42,
                   ),
                 ),
               ),
 
-              const SizedBox(height: 35),
+              const SizedBox(height: 32),
 
               const Text(
                 'Masuk ke FixMate',
@@ -45,65 +46,74 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 8),
 
               const Text(
-                'Pesan jasa perbaikan rumah dengan mudah dan cepat.',
+                'Silakan login untuk memesan jasa perbaikan rumah.',
                 style: TextStyle(fontSize: 15, color: Color(0xFF6B7280)),
               ),
 
-              const SizedBox(height: 35),
+              const SizedBox(height: 32),
+
+              const Text(
+                'Email',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF374151),
+                ),
+              ),
+
+              const SizedBox(height: 8),
 
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email',
+                  hintText: 'Masukkan email',
                   prefixIcon: const Icon(Icons.email_outlined),
                   filled: true,
                   fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(14),
                     borderSide: BorderSide.none,
                   ),
                 ),
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
+
+              const Text(
+                'Password',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF374151),
+                ),
+              ),
+
+              const SizedBox(height: 8),
 
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  hintText: 'Masukkan password',
                   prefixIcon: const Icon(Icons.lock_outline),
                   filled: true,
                   fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(14),
                     borderSide: BorderSide.none,
                   ),
                 ),
               ),
 
-              const SizedBox(height: 26),
+              const SizedBox(height: 28),
 
-              SizedBox(
-                width: double.infinity,
-                height: 54,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Nanti diarahkan ke MainPage setelah Bottom Navigation dibuat
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF2563EB),
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
+              const SubmitLogin(),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 22),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

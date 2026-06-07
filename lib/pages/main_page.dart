@@ -228,15 +228,129 @@ class PesananPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFFF4F8FB),
+    return Scaffold(
+      backgroundColor: const Color(0xFFF4F8FB),
       body: SafeArea(
-        child: Center(
-          child: Text(
-            'Pesanan',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              SizedBox(height: 10),
+
+              Text(
+                'Pesanan Saya',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1F2937),
+                ),
+              ),
+
+              SizedBox(height: 8),
+
+              Text(
+                'Riwayat pesanan layanan FixMate.',
+                style: TextStyle(fontSize: 15, color: Color(0xFF6B7280)),
+              ),
+
+              SizedBox(height: 24),
+
+              PesananCard(
+                title: 'Service AC',
+                tanggal: '12 Juni 2026',
+                status: 'Menunggu Teknisi',
+                icon: Icons.ac_unit,
+              ),
+
+              PesananCard(
+                title: 'Perbaikan WiFi',
+                tanggal: '10 Juni 2026',
+                status: 'Selesai',
+                icon: Icons.wifi,
+              ),
+            ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PesananCard extends StatelessWidget {
+  final String title;
+  final String tanggal;
+  final String status;
+  final IconData icon;
+
+  const PesananCard({
+    super.key,
+    required this.title,
+    required this.tanggal,
+    required this.status,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 52,
+            height: 52,
+            decoration: BoxDecoration(
+              color: const Color(0xFFEFF6FF),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Icon(icon, color: const Color(0xFF2563EB), size: 28),
+          ),
+
+          const SizedBox(width: 14),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1F2937),
+                  ),
+                ),
+
+                const SizedBox(height: 4),
+
+                Text(
+                  tanggal,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF6B7280),
+                  ),
+                ),
+
+                const SizedBox(height: 8),
+
+                Text(
+                  status,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF2563EB),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -247,15 +361,119 @@ class ProfilPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFFF4F8FB),
+    return Scaffold(
+      backgroundColor: const Color(0xFFF4F8FB),
       body: SafeArea(
-        child: Center(
-          child: Text(
-            'Profil',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: const [
+              SizedBox(height: 24),
+
+              CircleAvatar(
+                radius: 46,
+                backgroundColor: Color(0xFFEFF6FF),
+                child: Icon(Icons.person, size: 52, color: Color(0xFF2563EB)),
+              ),
+
+              SizedBox(height: 16),
+
+              Text(
+                'Pengguna FixMate',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1F2937),
+                ),
+              ),
+
+              SizedBox(height: 6),
+
+              Text(
+                'user@fixmate.com',
+                style: TextStyle(fontSize: 14, color: Color(0xFF6B7280)),
+              ),
+
+              SizedBox(height: 30),
+
+              ProfilMenu(
+                icon: Icons.phone_outlined,
+                title: 'Nomor Telepon',
+                subtitle: '0812-0000-0000',
+              ),
+
+              ProfilMenu(
+                icon: Icons.location_on_outlined,
+                title: 'Alamat',
+                subtitle: 'Jakarta, Indonesia',
+              ),
+
+              ProfilMenu(
+                icon: Icons.info_outline,
+                title: 'Tentang Aplikasi',
+                subtitle: 'FixMate versi prototype',
+              ),
+            ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ProfilMenu extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+
+  const ProfilMenu({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: const Color(0xFF2563EB), size: 28),
+
+          const SizedBox(width: 14),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1F2937),
+                  ),
+                ),
+
+                const SizedBox(height: 4),
+
+                Text(
+                  subtitle,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF6B7280),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

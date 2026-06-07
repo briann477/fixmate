@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../main_page.dart';
 import 'tombol_login.dart';
 
 class SubmitLogin extends StatelessWidget {
@@ -9,11 +10,10 @@ class SubmitLogin extends StatelessWidget {
     return TombolLogin(
       teks: 'Login',
       onPressed: () {
-        ScaffoldMessenger.of(
+        Navigator.pushReplacement(
           context,
-        ).showSnackBar(const SnackBar(content: Text('Login berhasil')));
-
-        // Nanti kalau MainPage sudah dibuat, bagian ini baru kita arahkan ke halaman utama.
+          MaterialPageRoute(builder: (context) => const MainPage()),
+        );
       },
     );
   }

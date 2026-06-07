@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'form_pesanan_page.dart';
 
 class DetailLayananPage extends StatelessWidget {
   final IconData icon;
@@ -45,20 +46,17 @@ class DetailLayananPage extends StatelessWidget {
                     ),
                     child: Icon(icon, color: const Color(0xFF2563EB), size: 38),
                   ),
-
                   const SizedBox(height: 18),
-
                   Text(
                     title,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF1F2937),
                     ),
                   ),
-
                   const SizedBox(height: 8),
-
                   Text(
                     subtitle,
                     textAlign: TextAlign.center,
@@ -85,7 +83,7 @@ class DetailLayananPage extends StatelessWidget {
             const SizedBox(height: 8),
 
             const Text(
-              'Layanan ini membantu pengguna memesan jasa perbaikan rumah dengan mudah. Pengguna dapat melihat jenis layanan dan melanjutkan proses pemesanan.',
+              'Layanan ini membantu pengguna memesan jasa perbaikan rumah dengan mudah. Pengguna dapat melihat jenis layanan, membaca detail layanan, lalu melanjutkan ke form pemesanan.',
               style: TextStyle(
                 fontSize: 14,
                 color: Color(0xFF6B7280),
@@ -100,11 +98,10 @@ class DetailLayananPage extends StatelessWidget {
               height: 52,
               child: ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        'Fitur pesan layanan akan dibuat berikutnya',
-                      ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FormPesananPage(namaLayanan: title),
                     ),
                   );
                 },

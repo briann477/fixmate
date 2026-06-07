@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../register/register_page.dart';
 import 'submit_login.dart';
 
 class LoginPage extends StatelessWidget {
@@ -124,7 +125,12 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterPage(),
+                        ),
+                      );
                     },
                     child: const Text('Daftar'),
                   ),

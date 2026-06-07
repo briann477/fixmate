@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'detail_layanan_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -152,59 +153,71 @@ class LayananCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 52,
-            height: 52,
-            decoration: BoxDecoration(
-              color: const Color(0xFFEFF6FF),
-              borderRadius: BorderRadius.circular(14),
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                DetailLayananPage(icon: icon, title: title, subtitle: subtitle),
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 14),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                color: const Color(0xFFEFF6FF),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Icon(icon, color: const Color(0xFF2563EB), size: 28),
             ),
-            child: Icon(icon, color: const Color(0xFF2563EB), size: 28),
-          ),
 
-          const SizedBox(width: 14),
+            const SizedBox(width: 14),
 
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1F2937),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1F2937),
+                    ),
                   ),
-                ),
 
-                const SizedBox(height: 4),
+                  const SizedBox(height: 4),
 
-                Text(
-                  subtitle,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    color: Color(0xFF6B7280),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Color(0xFF6B7280),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
 
-          const Icon(
-            Icons.arrow_forward_ios,
-            size: 16,
-            color: Color(0xFF9CA3AF),
-          ),
-        ],
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: Color(0xFF9CA3AF),
+            ),
+          ],
+        ),
       ),
     );
   }

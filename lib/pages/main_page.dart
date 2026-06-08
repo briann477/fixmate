@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'detail_layanan_page.dart';
+import 'login/login_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -367,18 +368,18 @@ class ProfilPage extends StatelessWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
-            children: const [
-              SizedBox(height: 24),
+            children: [
+              const SizedBox(height: 24),
 
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 46,
                 backgroundColor: Color(0xFFEFF6FF),
                 child: Icon(Icons.person, size: 52, color: Color(0xFF2563EB)),
               ),
 
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
-              Text(
+              const Text(
                 'Pengguna FixMate',
                 style: TextStyle(
                   fontSize: 24,
@@ -387,31 +388,62 @@ class ProfilPage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 6),
+              const SizedBox(height: 6),
 
-              Text(
+              const Text(
                 'user@fixmate.com',
                 style: TextStyle(fontSize: 14, color: Color(0xFF6B7280)),
               ),
 
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
 
-              ProfilMenu(
+              const ProfilMenu(
                 icon: Icons.phone_outlined,
                 title: 'Nomor Telepon',
                 subtitle: '0812-0000-0000',
               ),
 
-              ProfilMenu(
+              const ProfilMenu(
                 icon: Icons.location_on_outlined,
                 title: 'Alamat',
                 subtitle: 'Jakarta, Indonesia',
               ),
 
-              ProfilMenu(
+              const ProfilMenu(
                 icon: Icons.info_outline,
                 title: 'Tentang Aplikasi',
                 subtitle: 'FixMate versi prototype',
+              ),
+
+              const SizedBox(height: 18),
+
+              SizedBox(
+                width: double.infinity,
+                height: 52,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  icon: const Icon(Icons.logout),
+                  label: const Text(
+                    'Logout',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFEF4444),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

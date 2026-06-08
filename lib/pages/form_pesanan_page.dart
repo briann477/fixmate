@@ -88,6 +88,52 @@ class FormPesananPage extends StatelessWidget {
             const SizedBox(height: 18),
 
             const Text(
+              'Tanggal Kunjungan',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF374151),
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Contoh: 15 Juni 2026',
+                prefixIcon: const Icon(Icons.calendar_month_outlined),
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 18),
+
+            const Text(
+              'Jam Kunjungan',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF374151),
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Contoh: 10.00 WIB',
+                prefixIcon: const Icon(Icons.access_time),
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 18),
+
+            const Text(
               'Alamat',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
@@ -162,6 +208,8 @@ class FormPesananPage extends StatelessWidget {
                 ),
               ),
             ),
+
+            const SizedBox(height: 20),
           ],
         ),
       ),

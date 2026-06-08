@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'detail_layanan_page.dart';
 import 'login/login_page.dart';
+import 'detail_pesanan_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -262,6 +263,7 @@ class PesananPage extends StatelessWidget {
                 tanggal: '12 Juni 2026',
                 status: 'Menunggu Teknisi',
                 icon: Icons.ac_unit,
+                selesai: false,
               ),
 
               PesananCard(
@@ -269,6 +271,15 @@ class PesananPage extends StatelessWidget {
                 tanggal: '10 Juni 2026',
                 status: 'Selesai',
                 icon: Icons.wifi,
+                selesai: true,
+              ),
+
+              PesananCard(
+                title: 'Perbaikan Keran',
+                tanggal: '8 Juni 2026',
+                status: 'Selesai',
+                icon: Icons.water_drop,
+                selesai: true,
               ),
             ],
           ),
@@ -283,6 +294,7 @@ class PesananCard extends StatelessWidget {
   final String tanggal;
   final String status;
   final IconData icon;
+  final bool selesai;
 
   const PesananCard({
     super.key,
@@ -290,68 +302,106 @@ class PesananCard extends StatelessWidget {
     required this.tanggal,
     required this.status,
     required this.icon,
+    required this.selesai,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 52,
-            height: 52,
-            decoration: BoxDecoration(
-              color: const Color(0xFFEFF6FF),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Icon(icon, color: const Color(0xFF2563EB), size: 28),
-          ),
-
-          const SizedBox(width: 14),
-
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1F2937),
-                  ),
-                ),
-
-                const SizedBox(height: 4),
-
-                Text(
-                  tanggal,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    color: Color(0xFF6B7280),
-                  ),
-                ),
-
-                const SizedBox(height: 8),
-
-                Text(
-                  status,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF2563EB),
-                  ),
-                ),
-              ],
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPesananPage(
+              title: title,
+              tanggal: tanggal,
+              status: status,
+              icon: icon,
+              selesai: selesai,
             ),
           ),
-        ],
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 14),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                color: const Color(0xFFEFF6FF),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Icon(icon, color: const Color(0xFF2563EB), size: 28),
+            ),
+
+            const SizedBox(width: 14),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1F2937),
+                    ),
+                  ),
+
+                  const SizedBox(height: 4),
+
+                  Text(
+                    tanggal,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Color(0xFF6B7280),
+                    ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: selesai
+                          ? const Color(0xFFE8F7EF)
+                          : const Color(0xFFFFF7E6),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      status,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: selesai
+                            ? const Color(0xFF16A34A)
+                            : const Color(0xFFD97706),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: Color(0xFF9CA3AF),
+            ),
+          ],
+        ),
       ),
     );
   }

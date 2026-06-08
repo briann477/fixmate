@@ -13,6 +13,38 @@ class DetailLayananPage extends StatelessWidget {
     required this.subtitle,
   });
 
+  String getEstimasiHarga() {
+    if (title == 'Service AC') {
+      return 'Rp75.000 - Rp150.000';
+    } else if (title == 'Perbaikan Listrik') {
+      return 'Rp60.000 - Rp120.000';
+    } else if (title == 'Perbaikan Keran') {
+      return 'Rp50.000 - Rp100.000';
+    } else if (title == 'Service Mesin Cuci') {
+      return 'Rp80.000 - Rp180.000';
+    } else if (title == 'Perbaikan WiFi') {
+      return 'Rp50.000 - Rp100.000';
+    } else {
+      return 'Rp40.000 - Rp100.000';
+    }
+  }
+
+  String getEstimasiWaktu() {
+    if (title == 'Service AC') {
+      return '1 - 2 jam';
+    } else if (title == 'Perbaikan Listrik') {
+      return '1 - 2 jam';
+    } else if (title == 'Perbaikan Keran') {
+      return '30 - 60 menit';
+    } else if (title == 'Service Mesin Cuci') {
+      return '1 - 3 jam';
+    } else if (title == 'Perbaikan WiFi') {
+      return '30 - 90 menit';
+    } else {
+      return '30 - 60 menit';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +101,28 @@ class DetailLayananPage extends StatelessWidget {
               ),
             ),
 
+            const SizedBox(height: 20),
+
+            Row(
+              children: [
+                Expanded(
+                  child: InfoBox(
+                    icon: Icons.payments_outlined,
+                    title: 'Estimasi Harga',
+                    value: getEstimasiHarga(),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: InfoBox(
+                    icon: Icons.access_time,
+                    title: 'Estimasi Waktu',
+                    value: getEstimasiWaktu(),
+                  ),
+                ),
+              ],
+            ),
+
             const SizedBox(height: 24),
 
             const Text(
@@ -121,6 +175,51 @@ class DetailLayananPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class InfoBox extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String value;
+
+  const InfoBox({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 118,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: const Color(0xFF2563EB), size: 26),
+          const SizedBox(height: 10),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 12, color: Color(0xFF6B7280)),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF1F2937),
+            ),
+          ),
+        ],
       ),
     );
   }
